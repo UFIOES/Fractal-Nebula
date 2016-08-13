@@ -1,0 +1,28 @@
+// FractalNebula.idl : type library source for Fractal Nebula.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (FractalNebula.tlb).
+
+[uuid(2CA3A9F7-32F9-4719-ADCF-32E89790B97B), version(1.0)]
+library FractalNebula
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for CFractalNebulaDoc
+
+	[uuid(5174CC65-0307-431F-B751-4455EEC4ADAA)]
+	dispinterface IFractalNebula
+	{
+		properties:
+
+		methods:
+	};
+
+	//  Class information for CFractalNebulaDoc
+
+	[uuid(6857063A-C3D4-4BEE-8ECC-2DBFFAD2EFBA)]
+	coclass CFractalNebulaDoc {
+		[default] dispinterface IFractalNebula;
+	};
+};
