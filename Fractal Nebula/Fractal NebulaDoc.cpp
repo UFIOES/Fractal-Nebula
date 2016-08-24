@@ -46,6 +46,8 @@ END_INTERFACE_MAP()
 CFractalNebulaDoc::CFractalNebulaDoc() {
 	// TODO: add one-time construction code here
 
+	nebula = new nebulaData[nebulaSize];
+
 	EnableAutomation();
 
 	AfxOleLockApp();
@@ -62,20 +64,63 @@ BOOL CFractalNebulaDoc::OnNewDocument() {
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
 
+	built = FALSE;
+
+	std::mt19937 engine(time(NULL));
+	std::uniform_real_distribution<float> point(-1.0f, 1.0f);
+	std::uniform_real_distribution<float> weight(1.0f, 2.0f);
+	std::uniform_real_distribution<float> color(0.0f, 1.0f);
+
+	variations = 3;
+
+	functions = new variation[variations];
+	
+	for (int i = 0; i < variations; i++) {
+
+		functions[i] = {
+			weight(engine),
+			point(engine), point(engine), point(engine), point(engine),
+			point(engine), point(engine), point(engine), point(engine),
+			point(engine), point(engine), point(engine), point(engine),
+			0.0f, 1.0f, i / 2.0f, 1.0f,
+		};
+
+	}
+
+	valid = TRUE;
+
 	return TRUE;
 
 }
 
 
+void CFractalNebulaDoc::build() {
 
+	if (built) return;
+
+	generate(nebulaSize, functions, variations, nebula);
+
+	built = TRUE;
+
+}
 
 // CFractalNebulaDoc serialization
 
 void CFractalNebulaDoc::Serialize(CArchive& ar) {
 	if (ar.IsStoring()) {
-		// TODO: add storing code here
+
+		ar.Write(&variations, 1);
+
+		for (int i = 0; i < variations; i++) ar.Write(&functions[i], sizeof(variation));
+
 	} else {
-		// TODO: add loading code here
+
+		ar.Read(&variations, 1);
+
+		for (int i = 0; i < variations; i++) ar.Read(&functions[i], sizeof(variation));
+
+		built = FALSE;
+
 	}
 }
 

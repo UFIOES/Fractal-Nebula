@@ -15,8 +15,12 @@ class CFractalNebulaDoc : public CDocument {
 
 	// Attributes
 	public:
-	int nebulaSize = 800;
+	int nebulaSize = 200000;
 	nebulaData* nebula;
+	int variations;
+	variation* functions;
+	BOOL valid = FALSE;
+	BOOL built = FALSE;
 	
 	// Operations
 	public:
@@ -37,6 +41,7 @@ class CFractalNebulaDoc : public CDocument {
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
 	#endif
+	void build();
 
 	protected:
 

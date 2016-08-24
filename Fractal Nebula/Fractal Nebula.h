@@ -4,7 +4,7 @@
 #pragma once
 
 #ifndef __AFXWIN_H__
-	#error "include 'stdafx.h' before including this file for PCH"
+#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
 #include "resource.h"       // main symbols
@@ -14,20 +14,19 @@
 // See Fractal Nebula.cpp for the implementation of this class
 //
 
-class CFractalNebulaApp : public CWinAppEx
-{
-public:
+class CFractalNebulaApp : public CWinAppEx {
+	public:
 	CFractalNebulaApp();
 
 
-// Overrides
-public:
+	// Overrides
+	public:
 	virtual BOOL InitInstance();
 	virtual int ExitInstance();
 
-// Implementation
+	// Implementation
 	COleTemplateServer m_server;
-		// Server object for document creation
+	// Server object for document creation
 	UINT  m_nAppLook;
 	BOOL  m_bHiColorIcons;
 

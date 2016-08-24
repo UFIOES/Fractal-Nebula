@@ -33,11 +33,13 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
+#include <random>
 
-
+#include <d3d10.h>
 #include <d3d11.h>
+#include <d3dcompiler.h>
 
-
+#include <DirectXMath.h>
 
 
 #ifdef _UNICODE

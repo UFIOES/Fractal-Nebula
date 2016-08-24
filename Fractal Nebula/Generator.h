@@ -1,10 +1,18 @@
 #pragma once
 
-typedef struct nebulaData {
+struct nebulaData {
 	float x;
 	float y;
 	float z;
-	float color[3];
-} nebulaData;
+	float color[4];
+};
 
-nebulaData* generate();
+struct variation {
+	float weight;
+	float x[4];
+	float y[4];
+	float z[4];
+	float color[4];
+};
+
+void generate(int iterations, variation* functions, int n, nebulaData* output);
