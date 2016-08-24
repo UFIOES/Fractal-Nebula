@@ -87,8 +87,8 @@ void CFractalNebulaView::InitDirect3D() {
 	ID3D10Blob* PS;
 	ID3D10Blob* VS;
 
-	LPCWSTR PPath = L"C:\\Users\\Sam\\Source\\Repos\\Fractal-Nebula\\Fractal Nebula\\PixelShader.hlsl";
-	LPCWSTR VPath = L"C:\\Users\\Sam\\Source\\Repos\\Fractal-Nebula\\Fractal Nebula\\VertexShader.hlsl";
+	LPCWSTR PPath = L"PixelShader.hlsl";
+	LPCWSTR VPath = L"VertexShader.hlsl";
 
 	UINT flags = D3DCOMPILE_ENABLE_STRICTNESS;
 
